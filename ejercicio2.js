@@ -1,6 +1,6 @@
 
 const aprendiz = {
-    nombreA : "Yoiner", 
+    nombreA : "Yoiner.", 
     numeroF : 3412768,
 };
 const notas = [2.3 , 1.5, 3.0]
