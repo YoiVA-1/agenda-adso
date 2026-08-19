@@ -4,40 +4,44 @@ import FormularioContacto from "./Components/FormularioContacto";
 import ContactoCard from "./Components/ContactoCard";
 
 export default function App() {
-  const contactosGuardados =
-    JSON.parse(localStorage.getItem("contactos")) || [];
+    const contactosGuardados =
+        JSON.parse(localStorage.getItem("contactos")) || [];
 
-  const [contactos, setContactos] = useState(contactosGuardados);
+    const [contactos, setContactos] = useState(contactosGuardados);
 
-  useEffect(() => {
-    localStorage.setItem("contactos", JSON.stringify(contactos));
-  }, [contactos]);
+    useEffect(() => {
+        localStorage.setItem("contactos", JSON.stringify(contactos));
+    }, [contactos]);
 
-  const agregarContacto = (nuevo) => {
-    setContactos((prev) => [...prev, nuevo]);
-  };
+    const agregarContacto = (nuevo) => {
+        setContactos((prev) => [...prev, nuevo]);
+    };
 
-  const eliminarContacto = (correo) => {
-    setContactos((prev) => prev.filter((c) => c.correo !== correo));
-  };
+    const eliminarContacto = (correo) => {
+        setContactos((prev) => prev.filter(c => c.correo !== correo));
+    };
 
-  return (
-    <main className="app-container">
-      <h1 className="app-title">Agenda ADSO v3</h1>
-      <p className="subtitulo">
-        Persistencia con localStorage + UI moderna
-      </p>
-
-      <FormularioContacto onAgregar={agregarContacto} />
-
-      {contactos.map((c) => (
-        <ContactoCard
-          key={c.correo}
-          {...c}
-          onEliminar={eliminarContacto}
-        />
-      ))}
-    </main>
-  );
+    return (
+        <main className="min-h-screen py-10 px-4">
+            {/* Título centrado con color morado */}
+            <h1 className="text-4xl font-bold text-center text-purple-600 mb-8">
+                Agenda ADSO v3
+            </h1>
+            <div className="max-w-4xl mx-auto">
+                <section className="bg-white border border-gray-200 rounded-xl shadow-sm p-6 mb-6">
+                    <FormularioContacto onAgregar={agregarContacto} />
+                </section>
+                <section className="space-y-4">
+                    {contactos.map((c) => (
+                        <ContactoCard
+                            key={c.correo}
+                            {...c}
+                            onEliminar={eliminarContacto}
+                        />
+                    ))}
+                </section>
+            </div>
+        </main>
+    );
 }
 
