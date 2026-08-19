@@ -1,9 +1,8 @@
 body {
-  font-family: sans-serif;
-  background-color: #f2f2f2; /* gris claro */
-  color: #222; /* texto oscuro legible */
+  background: var(--gris);
+  font-family: Inter, system-ui, Arial;
   margin: 0;
-  padding: 0;
+  color: #111827;
 }
 
 /* Enlaces */
@@ -22,7 +21,7 @@ button {
   color: white;
   border: none;
   border-radius: 6px;
-padding: 8px 14px;
+  padding: 8px 14px;
   cursor: pointer;
   font-size: 14px;
 }
